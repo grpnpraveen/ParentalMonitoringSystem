@@ -36,20 +36,20 @@ def mailing():
 def age_detection():
 
     if request.method == 'POST':
-        try:
-            image = request.files['image']
-            fileName=secure_filename(image.filename)
-            image.save(fileName)
-            res=FinalPrediction(image=fileName)
-            os.remove(fileName)
-            if res[2]==-1:
-                response={ "response":res[0],"message":res[1]}
-            else:
-                response={ "response":res[0],"message":res[1],"age":res[2]}
-        except:
-            res=True
-            message="missing data"
-            response={ "response":res,"message":message}
+        # try:
+        image = request.files['image']
+        fileName=secure_filename(image.filename)
+        image.save(fileName)
+        res=FinalPrediction(image=fileName)
+        os.remove(fileName)
+        if res[2]==-1:
+            response={ "response":res[0],"message":res[1]}
+        else:
+            response={ "response":res[0],"message":res[1],"age":res[2]}
+        # except:
+        #     res=True
+        #     message="missing data"
+        #     response={ "response":res,"message":message}
         return response,200
 
     else:
