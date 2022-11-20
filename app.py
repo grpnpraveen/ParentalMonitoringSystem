@@ -4,6 +4,8 @@ from MailSend import Send
 from AgeDetection_with_Image import FinalPrediction
 from werkzeug.utils import secure_filename
 import os
+import base64
+
 app = Flask(__name__)
 CORS(app)
 
@@ -37,9 +39,15 @@ def age_detection():
 
     if request.method == 'POST':
         try:
-            image = request.files['image']
-            fileName=secure_filename(image.filename)
-            image.save(fileName)
+            image = request.form['image']
+            # image = request.files['image']
+            fileName="some.jpg"
+            image=base64.b64decode(str(image))
+            handler = open(fileName, "wb+")
+            handler.write(image)
+            handler.close()
+            # fileName=secure_filename(image.filename)
+            # image.save(fileName)app.py
             res=FinalPrediction(image=fileName)
             os.remove(fileName)
             if res[2]==-1:
