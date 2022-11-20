@@ -32,7 +32,7 @@ matplotlib-inline==0.1.2
 multiprocess==0.70.13
 numpy==1.23.3
 oauthlib==3.1.1
-opencv-python==4.6.0.66
+opencv-python-headless
 parso==0.8.2
 pickleshare==0.7.5
 prompt-toolkit==3.0.18
