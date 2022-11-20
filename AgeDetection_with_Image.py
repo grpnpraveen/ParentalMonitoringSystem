@@ -98,7 +98,7 @@ def DisplayVid(frame):
         # if cv2.waitKey(1) & 0xFF == ord('q'):
         #     cv2.destroyAllWindows()
         #     break
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
 def FinalPrediction(image=None):
     if image!=None:
