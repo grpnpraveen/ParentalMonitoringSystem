@@ -1,5 +1,5 @@
 from flask import Flask,request
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 from MailSend import Send
 from AgeDetection_with_Image import FinalPrediction
 from werkzeug.utils import secure_filename
@@ -7,10 +7,11 @@ import os
 import base64
 
 app = Flask(__name__)
-CORS(app,origin="*")
-
+CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route("/mail",methods = ['POST', 'GET'])
+@cross_origin()
 def mailing():
     res=""
     message=""
