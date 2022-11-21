@@ -7,8 +7,7 @@ import os
 import base64
 
 app = Flask(__name__)
-CORS(app)
-
+CORS(app,origin="*")
 
 
 @app.route("/mail",methods = ['POST', 'GET'])
